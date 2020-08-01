@@ -13,6 +13,7 @@ const getCourseParams = (body) => {
 
 module.exports = {
     index: (req, res, next) => {
+        console.log('finding courses...');
         Course.find()
             .then(courses => {
                 res.locals.courses = courses;
@@ -104,12 +105,14 @@ module.exports = {
             });
     },
     respondJSON: (req, res) => {
+        console.log('responding with json...');
         res.json({
             status: httpStatus.OK,
             data: res.locals
         });
     },
     errorJSON: (error, req, res, next) => {
+        console.log('some error in json...');
         let errorObject;
 
         if(error) {
@@ -147,6 +150,7 @@ module.exports = {
         }
     },
     filterUserCourses: (req, res, next) => {
+        console.log('filtering user courses');
         let currentUser = res.locals.currentUser;
         if (currentUser) {
             let mappedCourses = res.locals.courses.map((course) => {

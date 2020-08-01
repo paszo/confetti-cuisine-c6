@@ -4,13 +4,14 @@
     <title>Confetti Cuisine</title>
 <!--    <link rel="stylesheet" href="/css/bootstrap.css" />-->
         <link rel="stylesheet" href="/css/confetti_cuisine.css" />
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/recipeApp.js"></script>
+<!--    <script type="text/javascript" src="/js/jquery.min.js"></script>-->
+<!--    <script type="text/javascript" src="/js/bootstrap.min.js"></script>-->
+    <script type="text/javascript" src="/js/confettiCuisine.js" defer></script>
 </head>
 <% if (loggedIn) { %>
     Logged in as <a href="<%= `/users/${currentUser._id}`%>">
         <%= currentUser.fullName %>
+        <div id="apiToken" data-token="<%= currentUser.apiToken %>" style="display: none;"></div>
     </a>
 <a href="/users/logout">Logout</a>
 <% } else {%>

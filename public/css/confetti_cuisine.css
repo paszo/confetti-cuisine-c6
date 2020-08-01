@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  padding-top: 150px;
+  /*padding-top: 150px;*/
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #625a56;
 }
@@ -58,4 +58,9 @@ a {
 .button:hover {
   background-color: #ffb99f;
   color: #ed4a0f;
+}
+
+#myModal {
+  display: none;
+  background-color: #d72a2a;
 }

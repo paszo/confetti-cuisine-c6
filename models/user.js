@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const {Schema} = require('mongoose');
 const bcrypt = require('bcrypt');
 const passportLocalMongoose = require('passport-local-mongoose');
+const randToken = require('rand-token');
 
 const Subscriber = require('./subscriber');
 
@@ -40,6 +41,9 @@ const userSchema = new Schema(
         subscribedAccount: {
             type: Schema.Types.ObjectId,
             ref: "Subscriber"
+        },
+        apiToken: {
+            type: String
         }
     },
     {
@@ -69,6 +73,12 @@ userSchema.pre("save", function(next) {
         next();
     }
 });
+
+userSchema.pre("save", function(next) {
+    let user = this;
+    if (!user.apiToken) user.apiToken = randToken.generate(16);
+    next();
+})
 
 // userSchema.pre("save", function(next) {
 //     let user = this;
